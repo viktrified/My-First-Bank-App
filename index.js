@@ -128,9 +128,6 @@ transferMoney(users[0].accountNumber, users[1].accountNumber, 100);
 console.log(users);
 
 const loanRequest = (accountNumber, amount) => {
-  // if borrower has accountNumber
-  // borrower can only borrow a maximum of 500000
-
   let accountExist = checkUserData("accountNumber", accountNumber);
   if (!accountExist) {
     console.log("Account does not exist!");
