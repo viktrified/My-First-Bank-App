@@ -20,10 +20,10 @@ function checkUserData(dataKey, data) {
 }
 
 function getUserData(dataKey, data) {
-  let userData = false;
+  let userData = null;
   users.forEach((user) => {
-    if (user[dataKey] == data) {
-      data = user;
+    if (user[dataKey] === data) {
+      userData = user;
     }
   });
 
