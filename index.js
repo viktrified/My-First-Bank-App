@@ -57,7 +57,6 @@ const createBankAccount = (
     console.log("you already have an account with us!");
     return false;
   }
-  // {
   if (age < 18) {
     console.log("wait till you're 18");
   } else {
@@ -74,16 +73,29 @@ const createBankAccount = (
       phoneNumber: phoneNumber,
     });
   }
-  // }
 };
 
 console.log("Creating accounts...");
-createBankAccount("Victory", "slls", 45, "aldaefnadaflaf", "38389239282");
-createBankAccount("Victory", "slls", 25, "aldaefnadaflaf", "38389239281");
-createBankAccount("Victory", "slls", 35, "aldaefnadaflaf", "38389239283");
+createBankAccount(
+  "Victory",
+  "Ezeokafor",
+  21,
+  "Gwarandok, Jos, Nigeria",
+  "38389239282"
+);
+createBankAccount(
+  "Dev",
+  "Longs",
+  27,
+  "Blockfuselabs Headquaters Rayfield, Jos, Nigeria",
+  "38389239281"
+);
+createBankAccount("John", "Deo", 35, "nil", "38389239283");
 console.log(users);
 
 function depositMoney(accountNumber, amount) {
+  // user must have an account with the bank to deposit money
+
   let accountExist = checkUserData("accountNumber", accountNumber);
   if (!accountExist) {
     console.log("Account does not exist!");
@@ -100,6 +112,9 @@ console.log(`Total users money in bank: ${bank.usersMoney}`);
 console.log(users);
 
 function transferMoney(from, to, amount) {
+  // sender and receiver must have an account with the bank
+  // sender must have more than the amount in his account before transfers
+
   let accountExist = checkUserData("accountNumber", from);
   if (!accountExist) {
     console.log("Account does not exist!");
@@ -115,7 +130,7 @@ function transferMoney(from, to, amount) {
   if (users[getUserIndexByAccountNumber(from)].accountBalance >= amount) {
     users[getUserIndexByAccountNumber(from)].accountBalance -= amount;
     users[getUserIndexByAccountNumber(to)].accountBalance += amount;
-    console.log("Transfer successfull");
+    console.log("Transfer successfull!");
     return true;
   }
 
@@ -128,11 +143,27 @@ transferMoney(users[0].accountNumber, users[1].accountNumber, 100);
 console.log(users);
 
 const loanRequest = (accountNumber, amount) => {
+  // loan request will fail if the bank doesn't have more than 500,000,000
+  // user can't borrow more than 500,000.
+  // user must have an account with the bank to request loan
+
   let accountExist = checkUserData("accountNumber", accountNumber);
+
+  if (bank.bankLoanAccount < 500000000) {
+    console.log("You can't borrow at the moment!");
+    return false;
+  }
+
+  if (amount > 500000) {
+    console.log("You can't borrow more than 500,000!");
+    return false;
+  }
+
   if (!accountExist) {
     console.log("Account does not exist!");
     return false;
   }
+
   bank.bankLoanAccount -= amount;
   users[getUserIndexByAccountNumber(accountNumber)].accountBalance -= amount;
   users[getUserIndexByAccountNumber(accountNumber)].loanBalance += amount;
