@@ -1,4 +1,4 @@
-// there's a bank, multiple people will go to the bank and create an account, store their money,deposit, transfer,request a loan, and if the user doesn't have a bank account then you can't transfer.
+// there's a bank, multiple people will go to the bank and create an account, store their money, deposit, transfer, request a loan, and if the user doesn't have a bank account then you can't transfer.
 
 const bank = {
   bankName: "Viktrified Central Bank Of Planet Earth",
@@ -35,7 +35,7 @@ function getUserIndexByAccountNumber(accountNumber) {
 }
 
 // to create account push an object to the users[]
-// accountNumber, firstAndLastName, DOB, residential address, phone number, accountType(savings, current), balance, loan balance.
+// accountNumber, balance, loan balance, firstAndLastName, age, residential address, phone number.
 
 const generateAccountNumber = () => {
   let accountNumber = "83";
