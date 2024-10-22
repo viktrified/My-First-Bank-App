@@ -59,7 +59,7 @@ createBankAccount(
 createBankAccount("John", "Deo", 35, "nil", "38389239283");
 console.log(users);
 
-function depositMoney(user, amount) {
+const depositMoney = (user, amount) => {
   // user must have an account with the bank to deposit money
 
   for (i = 0; i < users.length; i++) {
@@ -68,14 +68,14 @@ function depositMoney(user, amount) {
       bank.usersMoney += amount;
     }
   }
-}
+};
 
 console.log("Deposit money to first account...");
 depositMoney(users[0], 5000);
 console.log(`Total users money in bank: ${bank.usersMoney}`);
 console.log(users);
 
-function transferMoney(sender, receiver, amount) {
+const transferMoney = (sender, receiver, amount) => {
   // sender and receiver must have an account with the bank
   // sender must have more amount he wants to send
 
@@ -94,7 +94,7 @@ function transferMoney(sender, receiver, amount) {
       console.log("Transfer Succesful!");
     }
   }
-}
+};
 
 console.log("Transfer money from first account to second account...");
 transferMoney(users[0], users[1], 2000);
